@@ -30,6 +30,15 @@ const playerReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 players: state.players.filter(player => player.id !== action.payload.id)
             };
+        case PlayerActionTypes.RESET_PLAYERS:
+            return {
+                ...state,
+                players: state.players.map(player => {
+                    player.score = 0;
+                    player.newValue = 0;
+                    return player;
+                })
+            };
         default:
             return state;
     }

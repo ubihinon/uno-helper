@@ -3,14 +3,21 @@ import {connect} from "react-redux";
 import {addPlayer} from "../../redux/player/player.actions";
 import PlayerComponent from "../../components/player/player.component.jsx";
 
+const MAX_PLAYERS = 10;
+const MIN_PLAYERS = 2;
+
 
 class PlayersPage extends React.Component {
     handleAddName = event => {
         event.preventDefault();
+        if (this.isMaxPlayerCount()) {
+            return;
+        }
+        const id = this.props.players.length > 0 ? Math.max.apply(Math, this.props.players.map(o => o.id)) + 1 : 1;
         this.props.addPlayer({
-            id: this.props.players.length > 0 ? Math.max.apply(Math, this.props.players.map(o => o.id)) + 1 : 1,
-            name: '',
-            value: 0,
+            id: id,
+            name: `Player ${id}`,
+            score: 0,
             newValue: 0
         });
     };
@@ -30,13 +37,22 @@ class PlayersPage extends React.Component {
                                 </div>
                             ))
                         }
-                        <button onClick={this.handleAddName} className='btn btn-primary btn-lg btn-block'>+
+                        <button onClick={this.handleAddName} className={`${this.isMaxPlayerCount() ? 'disabled' : ''} btn btn-primary btn-lg btn-block`}>
+                            +
                         </button>
                     </div>
                 </div>
             </form>
         )
     }
+
+    isMaxPlayerCount = () => {
+        return this.props.players.length >= MAX_PLAYERS;
+    };
+
+    isMinPlayerCount = () => {
+        return this.props.players.length <= MIN_PLAYERS;
+    };
 }
 
 

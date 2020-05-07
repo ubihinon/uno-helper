@@ -3,6 +3,7 @@ import './player.styles.scss';
 import {connect} from "react-redux";
 import {deletePlayer} from "../../redux/player/player.actions";
 
+const MIN_PLAYERS = 2;
 
 class PlayerComponent extends Component {
     handleNameChange = event => {
@@ -20,16 +21,32 @@ class PlayerComponent extends Component {
                            className='form-control form-control-lg'/>
                 </div>
                 <div className="col-auto">
-                    <button onClick={() => this.props.deletePlayer(this.props.player)}
+                    <button onClick={this.deletePlayerIfNeeded}
                             className='btn'>&#10005;</button>
                 </div>
             </div>
         );
     }
+
+    deletePlayerIfNeeded = event => {
+        event.preventDefault();
+        if (this.isMinPlayerCount()) {
+            return
+        }
+        this.props.deletePlayer(this.props.player);
+    };
+
+    isMinPlayerCount = () => {
+        return this.props.players.length <= MIN_PLAYERS;
+    };
 }
 
 const mapDispatchToProps = dispatch => ({
     deletePlayer: player => dispatch(deletePlayer(player)),
 });
 
-export default connect(null, mapDispatchToProps)(PlayerComponent);
+const mapStateToProps = state => ({
+    players: state.player.players
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerComponent);

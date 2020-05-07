@@ -16,8 +16,8 @@ class GamePage extends React.Component {
     save = event => {
         event.preventDefault();
 
-        this.setState(state => {
-            let players = state.players.map(player => {
+        this.setState(() => {
+            let players = this.props.players.map(player => {
                 player.score += player.newValue;
                 player.newValue = 0;
                 return player;
