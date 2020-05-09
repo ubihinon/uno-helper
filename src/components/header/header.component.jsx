@@ -3,11 +3,13 @@ import './header.styles.scss';
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {resetPlayers} from "../../redux/player/player.actions";
+import {clearHistory} from "../../redux/history/history.actions";
 
 
 class Header extends React.Component {
     handleNewGame = event => {
         this.props.resetPlayers();
+        this.props.clearHistory();
     };
 
     render() {
@@ -31,7 +33,8 @@ class Header extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-   resetPlayers: () => dispatch(resetPlayers())
+    resetPlayers: () => dispatch(resetPlayers()),
+    clearHistory: () => dispatch(clearHistory())
 });
 
 export default connect(null, mapDispatchToProps)(Header);

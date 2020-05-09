@@ -16,6 +16,11 @@ const historyReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 history: state.history.filter(history => history.id !== action.payload.id)
             };
+        case PlayerActionTypes.CLEAR_HISTORY:
+            return {
+                ...state,
+                history: []
+            };
         default:
             return state;
     }
