@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
+import {addHistory, deleteHistory} from "../../redux/history/history.actions";
 
 class GamePage extends React.Component {
     constructor(props) {
@@ -16,6 +17,18 @@ class GamePage extends React.Component {
     save = event => {
         event.preventDefault();
 
+        this.props.addHistory({
+            createdAt: Date.now(),
+            players: [
+                ...this.props.players.map(player => {
+                    return {
+                        id: player.id,
+                        score: player.score,
+                    }
+                })
+            ]
+        });
+
         this.setState(() => {
             let players = this.props.players.map(player => {
                 player.score += player.newValue;
@@ -27,6 +40,24 @@ class GamePage extends React.Component {
                 players: [...players]
             }
         });
+    };
+
+    undo = event => {
+        event.preventDefault();
+        let history = this.props.history.shift();
+        this.setState(() => {
+            let players = this.props.players.map(player => {
+                if (history) {
+                    const historyItem = history.players.find(({id}) => id === player.id);
+                    player.score = historyItem.score;
+                }
+                return player;
+            });
+
+            return {
+                players: [...players]
+            }
+        })
     };
 
     render() {
@@ -63,12 +94,22 @@ class GamePage extends React.Component {
                 <button className='btn btn-primary btn-lg btn-block' onClick={this.save}>
                     Save
                 </button>
+                <button className='btn btn-primary btn-lg btn-block' onClick={this.undo}>
+                    UNDO
+                </button>
             </div>
         )
     }
 }
-const mapStateToProps = state =>({
-    players: state.player.players
+
+const mapDispatchToProps = dispatch => ({
+    addHistory: history => dispatch(addHistory(history)),
+    deleteHistory: history => dispatch(deleteHistory(history))
 });
 
-export default connect(mapStateToProps)(GamePage);
+const mapStateToProps = state => ({
+    players: state.player.players,
+    history: state.history.history
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GamePage);
