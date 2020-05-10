@@ -1,7 +1,8 @@
 import GameTypeActionTypes from "./game-type.types";
+import GameTypes from "./game-type.consts";
 
 const INITIAL_STATE = {
-    gameType: ''
+    gameType: GameTypes.STANDARD
 };
 
 const gameTypeReducer = (state = INITIAL_STATE, action) => {

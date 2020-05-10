@@ -1,8 +1,20 @@
 import React from "react";
 import {connect} from "react-redux";
 import {addHistory, deleteHistory} from "../../redux/history/history.actions";
+import GameOver from "../../components/game-over/game-over.component.jsx";
+import GameTypes from "../../redux/game-type/game-type.consts";
+
 
 class GamePage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            winnerOrLoser: ''
+        };
+        console.log(this.props);
+    }
+
+
     handleValueChange = event => {
         let player = this.props.players.find(player => player.id === parseInt(event.target.getAttribute('id')));
         player.newValue = parseInt(event.target.value);
@@ -34,7 +46,25 @@ class GamePage extends React.Component {
             return {
                 players: [...players]
             }
-        });
+        }, this.checkWinnerOrLoser);
+    };
+
+    checkWinnerOrLoser = () => {
+        const maxScorePlayer = this.getPlayerWithMaxScore();
+        if (this.props.gameType === GameTypes.STANDARD) {
+
+            if (maxScorePlayer.score >= 500) {
+                this.setState({winnerOrLoser: maxScorePlayer});
+            }
+        } else {
+            if (maxScorePlayer.score >= 200) {
+                this.setState({winnerOrLoser: maxScorePlayer});
+            }
+        }
+    };
+
+    getPlayerWithMaxScore = () => {
+        return this.props.players.reduce((prev, current) => (prev.score > current.score) ? prev : current)
     };
 
     undo = event => {
@@ -56,6 +86,17 @@ class GamePage extends React.Component {
     };
 
     render() {
+        if (this.state.winnerOrLoser) {
+            let message = '';
+            if (this.props.gameType.gameType === GameTypes.STANDARD) {
+                message = 'won :)';
+            } else {
+                message = 'failed :(';
+            }
+            return (
+                <GameOver winnerOrLoser={this.state.winnerOrLoser} message={message}/>
+            )
+        }
         return (
             <div>
                 <table className='table table-hover'>
@@ -90,7 +131,7 @@ class GamePage extends React.Component {
                     Save
                 </button>
                 <button className='btn btn-primary btn-lg btn-block' onClick={this.undo}>
-                    UNDO
+                    Undo
                 </button>
             </div>
         )
@@ -104,7 +145,8 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
     players: state.player.players,
-    history: state.history.history
+    history: state.history.history,
+    gameType: state.gameType.gameType,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GamePage);

@@ -10,7 +10,6 @@ class Header extends React.Component {
     handleNewGame = event => {
         this.props.resetPlayers();
         this.props.clearHistory();
-        // this.props.history.push('/');
     };
 
     render() {
@@ -26,7 +25,7 @@ class Header extends React.Component {
                             <Link to="/players" className="nav-link">Players</Link>
                         </li>
                     </ul>
-                    <button className='btn btn-sm btn-outline-primary' onClick={this.handleNewGame}>New Game</button>
+                    <Link to="/" className="nav-link" onClick={this.handleNewGame}>New Game</Link>
                 </div>
             </nav>
         )

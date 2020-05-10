@@ -2,11 +2,14 @@ import React from "react";
 import './game-type.styles.scss';
 import {changeGameType} from "../../redux/game-type/game-type.actions";
 import {connect} from "react-redux";
+import GameTypes from "../../redux/game-type/game-type.consts";
 
 class GameType extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: 'standard'};
+        this.state = {
+            value: GameTypes.STANDARD
+        };
     }
 
     handleChange = event => {
@@ -29,8 +32,8 @@ class GameType extends React.Component {
                         value={this.state.value}
                         onChange={this.handleChange}
                         className='form-control form-control-lg'>
-                    <option value="standard">Standard</option>
-                    <option value="fast">Fast</option>
+                    <option value={GameTypes.STANDARD}>Standard</option>
+                    <option value={GameTypes.FAST}>Fast</option>
                 </select>
             </div>
         )
