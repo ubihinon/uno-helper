@@ -10,6 +10,7 @@ class Header extends React.Component {
     handleNewGame = event => {
         this.props.resetPlayers();
         this.props.clearHistory();
+        // this.props.history.push('/');
     };
 
     render() {

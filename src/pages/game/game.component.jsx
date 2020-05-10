@@ -3,11 +3,6 @@ import {connect} from "react-redux";
 import {addHistory, deleteHistory} from "../../redux/history/history.actions";
 
 class GamePage extends React.Component {
-    constructor(props) {
-        super(props);
-        console.log(props);
-    }
-
     handleValueChange = event => {
         let player = this.props.players.find(player => player.id === parseInt(event.target.getAttribute('id')));
         player.newValue = parseInt(event.target.value);
