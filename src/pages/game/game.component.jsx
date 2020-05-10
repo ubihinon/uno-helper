@@ -11,7 +11,6 @@ class GamePage extends React.Component {
         this.state = {
             winnerOrLoser: ''
         };
-        console.log(this.props);
     }
 
 
@@ -128,11 +127,11 @@ class GamePage extends React.Component {
                     </tbody>
                 </table>
                 <div className='d-flex justify-content-between'>
-                    <button className='btn btn-primary btn-lg' onClick={this.save}>
-                        Save
-                    </button>
-                    <button className='btn btn-lg btn-outline-danger' onClick={this.undo}>
+                    <button className='btn btn-lg btn-danger' onClick={this.undo}>
                         Undo
+                    </button>
+                    <button className='btn btn-primary btn-lg col-3' onClick={this.save}>
+                        Save
                     </button>
                 </div>
             </div>

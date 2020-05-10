@@ -1,17 +1,9 @@
 import React from "react";
 import './header.styles.scss';
 import {Link} from "react-router-dom";
-import {connect} from "react-redux";
-import {resetPlayers} from "../../redux/player/player.actions";
-import {clearHistory} from "../../redux/history/history.actions";
-
+import NewGameButton from "../new-game-button/new-game-button.component.jsx";
 
 class Header extends React.Component {
-    handleNewGame = event => {
-        this.props.resetPlayers();
-        this.props.clearHistory();
-    };
-
     render() {
         return (
             <nav className='navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-between'>
@@ -22,16 +14,11 @@ class Header extends React.Component {
                             <Link to="/" className="nav-link">Home</Link>
                         </li>
                     </ul>
-                    <Link to="/" className="nav-link" onClick={this.handleNewGame}>New Game</Link>
+                    <NewGameButton/>
                 </div>
             </nav>
         )
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    resetPlayers: () => dispatch(resetPlayers()),
-    clearHistory: () => dispatch(clearHistory())
-});
-
-export default connect(null, mapDispatchToProps)(Header);
+export default Header;
