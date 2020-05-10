@@ -127,12 +127,14 @@ class GamePage extends React.Component {
                     }
                     </tbody>
                 </table>
-                <button className='btn btn-primary btn-lg btn-block' onClick={this.save}>
-                    Save
-                </button>
-                <button className='btn btn-primary btn-lg btn-block' onClick={this.undo}>
-                    Undo
-                </button>
+                <div className='d-flex justify-content-between'>
+                    <button className='btn btn-primary btn-lg' onClick={this.save}>
+                        Save
+                    </button>
+                    <button className='btn btn-lg btn-outline-danger' onClick={this.undo}>
+                        Undo
+                    </button>
+                </div>
             </div>
         )
     }

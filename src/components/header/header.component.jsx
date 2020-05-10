@@ -21,9 +21,6 @@ class Header extends React.Component {
                         <li className="nav-item">
                             <Link to="/" className="nav-link">Home</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to="/players" className="nav-link">Players</Link>
-                        </li>
                     </ul>
                     <Link to="/" className="nav-link" onClick={this.handleNewGame}>New Game</Link>
                 </div>

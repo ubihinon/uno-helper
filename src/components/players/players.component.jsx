@@ -1,13 +1,13 @@
 import React from "react";
 import {connect} from "react-redux";
 import {addPlayer} from "../../redux/player/player.actions";
-import PlayerComponent from "../../components/player/player.component.jsx";
+import PlayerComponent from "../player/player.component.jsx";
 
 const MAX_PLAYERS = 10;
 const MIN_PLAYERS = 2;
 
 
-class PlayersPage extends React.Component {
+class Players extends React.Component {
     handleAddName = event => {
         event.preventDefault();
         if (this.isMaxPlayerCount()) {
@@ -24,25 +24,24 @@ class PlayersPage extends React.Component {
 
     render() {
         return (
-            <form action="">
-                <div className='card'>
-                    <div className="card-header">
-                        Players
-                    </div>
-                    <div className="card-body">
-                        {
-                            this.props.players.map(player => (
-                                <div className='form-group' key={player.id}>
-                                    <PlayerComponent player={player}/>
-                                </div>
-                            ))
-                        }
-                        <button onClick={this.handleAddName} className={`${this.isMaxPlayerCount() ? 'disabled' : ''} btn btn-primary btn-lg btn-block`}>
-                            +
-                        </button>
-                    </div>
+            <div className='card'>
+                <div className="card-header">
+                    Players
                 </div>
-            </form>
+                <div className="card-body">
+                    {
+                        this.props.players.map(player => (
+                            <div className='form-group' key={player.id}>
+                                <PlayerComponent player={player}/>
+                            </div>
+                        ))
+                    }
+                    <button onClick={this.handleAddName}
+                            className={`${this.isMaxPlayerCount() ? 'disabled' : ''} btn btn-primary btn-lg btn-block`}>
+                        +
+                    </button>
+                </div>
+            </div>
         )
     }
 
@@ -64,4 +63,4 @@ const mapStateToProps = state => ({
     players: state.player.players
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlayersPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Players);
