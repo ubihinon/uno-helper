@@ -2,7 +2,7 @@
     display: none !important;
 }
 
-.delete-btn {
+.btn-delete {
     position: absolute;
     right: 0;
     margin-right: 1.2rem;
@@ -12,6 +12,6 @@
     box-shadow: none !important;
 }
 
-.row:hover .delete-btn {
+.row:hover .btn-delete {
     opacity: 1;
 }

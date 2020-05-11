@@ -87,7 +87,7 @@ class GamePage extends React.Component {
     render() {
         if (this.state.winnerOrLoser) {
             let message = '';
-            if (this.props.gameType.gameType === GameTypes.STANDARD) {
+            if (this.props.gameType === GameTypes.STANDARD) {
                 message = 'won :)';
             } else {
                 message = 'failed :(';

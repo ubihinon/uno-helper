@@ -21,7 +21,9 @@ class PlayerComponent extends Component {
                            className='form-control form-control-lg'/>
                 </div>
                 <button onClick={this.deletePlayerIfNeeded}
-                        className={`btn btn-lg delete-btn ${this.isMinPlayerCount() ? 'hidden': ''}`}>&#10005;</button>
+                        className={`btn btn-lg btn-delete ${this.isMinPlayerCount() ? 'hidden': ''}`}>
+                    &#10005;
+                </button>
             </div>
         );
     }
