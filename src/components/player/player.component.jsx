@@ -20,10 +20,8 @@ class PlayerComponent extends Component {
                            value={this.props.player.name}
                            className='form-control form-control-lg'/>
                 </div>
-                <div className="col-auto">
-                    <button onClick={this.deletePlayerIfNeeded}
-                            className='btn'>&#10005;</button>
-                </div>
+                <button onClick={this.deletePlayerIfNeeded}
+                        className={`btn btn-lg delete-btn ${this.isMinPlayerCount() ? 'hidden': ''}`}>&#10005;</button>
             </div>
         );
     }

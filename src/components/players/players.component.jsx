@@ -38,8 +38,8 @@ class Players extends React.Component {
                     }
                     <div className='d-flex justify-content-end'>
                         <button onClick={this.handleAddName}
-                                className={`${this.isMaxPlayerCount() ? 'disabled' : ''} btn btn-primary col-2`}>
-                            +
+                                className={`${this.isMaxPlayerCount() ? 'disabled' : ''} btn btn-primary col-1`}>
+                            Add
                         </button>
                     </div>
                 </div>
