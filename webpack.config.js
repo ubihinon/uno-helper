@@ -14,16 +14,6 @@ const PATHS = {
     dist: path.join(__dirname, './dist'),
 };
 
-module.exports = {
-
-    devServer: {
-        contentBase: path.join(__dirname, 'dist'),
-        compress: false,
-        port: 3000,
-        historyApiFallback: true
-    }
-};
-
 const common = merge([
     {
         entry: "./src/index.js",
