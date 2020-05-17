@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import {persistor, store} from "./redux/store";
 import {Provider} from "react-redux";
@@ -11,13 +11,13 @@ import {PersistGate} from "redux-persist/integration/react";
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <HashRouter>
             <PersistGate persistor={persistor}>
                 <React.StrictMode>
                     <App/>
                 </React.StrictMode>
             </PersistGate>
-        </BrowserRouter>
+        </HashRouter>
     </Provider>,
     document.getElementById('root')
 );
