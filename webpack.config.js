@@ -22,7 +22,7 @@ const common = merge([
                 template: `${PATHS.src}/index.html`,
                 filename: "index.html",
                 publicPath: '/',
-                favicon: './favicon.ico'
+                favicon: './favicon.svg'
             }),
             new webpack.ProvidePlugin({
                 $: 'jquery',
