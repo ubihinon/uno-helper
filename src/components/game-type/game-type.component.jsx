@@ -24,17 +24,22 @@ class GameType extends React.Component {
 
     render() {
         return (
-
-            <div className='form-group col-12'>
-                <label htmlFor="gameType">Game type</label>
-                <select name="gameType"
-                        id="gameType"
-                        value={this.state.value}
-                        onChange={this.handleChange}
-                        className='form-control form-control-lg'>
-                    <option value={GameTypes.STANDARD}>Standard</option>
-                    <option value={GameTypes.FAST}>Fast</option>
-                </select>
+            <div className='card'>
+                <div className="card-header">
+                    Game type
+                </div>
+                <div className="card-body">
+                    <div className='form-group'>
+                        <select name="gameType"
+                                id="gameType"
+                                value={this.state.value}
+                                onChange={this.handleChange}
+                                className='form-control form-control-lg'>
+                            <option value={GameTypes.STANDARD}>Standard</option>
+                            <option value={GameTypes.FAST}>Fast</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         )
     }
