@@ -126,7 +126,7 @@ class GamePage extends React.Component {
                     }
                     </tbody>
                 </table>
-                <div className='d-flex justify-content-between'>
+                <div className='d-flex justify-content-between action-buttons'>
                     <button className='btn btn-lg btn-danger' onClick={this.undo}>
                         Undo
                     </button>

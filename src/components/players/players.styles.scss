@@ -1,0 +1,9 @@
+@import "../../App.scss";
+
+
+#btn-add {
+  @include media-breakpoint-down(sm) {
+    display: block;
+    width: 100%;
+  }
+}

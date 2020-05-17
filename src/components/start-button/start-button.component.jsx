@@ -10,7 +10,7 @@ class StartButton extends Component {
 
     render() {
         return (
-            <input type="button" value='Start' className='btn btn-outline-primary' onClick={this.handleClick}/>
+            <input type="button" value='Start' className='btn btn-primary' onClick={this.handleClick}/>
         );
     }
 }

@@ -2,7 +2,29 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
+@import "styles/variables";
+
+html {
+  @include media-breakpoint-down(md) {
+    font-size: 80%;
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 60%;
+  }
+}
 
 .container {
   margin-top: 5rem;
+
+  @include media-breakpoint-down(sm) {
+    padding: 0 !important;
+  }
+}
+
+.action-buttons {
+  padding: 0 !important;
+  @media screen and (max-width: $middle-size) {
+    padding: 0 1rem !important;
+  }
 }

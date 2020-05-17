@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {addPlayer} from "../../redux/player/player.actions";
 import PlayerComponent from "../player/player.component.jsx";
+import './players.styles.scss';
 
 const MAX_PLAYERS = 10;
 const MIN_PLAYERS = 2;
@@ -38,7 +39,7 @@ class Players extends React.Component {
                     }
                     <div className='d-flex justify-content-end'>
                         <button onClick={this.handleAddName}
-                                className={`${this.isMaxPlayerCount() ? 'disabled' : ''} btn btn-primary col-1`}>
+                                className={`${this.isMaxPlayerCount() ? 'disabled' : ''} btn btn-primary`} id='btn-add'>
                             Add
                         </button>
                     </div>

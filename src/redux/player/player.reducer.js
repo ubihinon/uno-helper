@@ -4,13 +4,13 @@ const INITIAL_STATE = {
     players: [
         {
             id: 1,
-            name: 'Karina',
+            name: 'Player 1',
             score: 0,
             newValue: 0,
         },
         {
             id: 2,
-            name: 'Stacy',
+            name: 'Player 2',
             score: 0,
             newValue: 0,
         }

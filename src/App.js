@@ -8,12 +8,14 @@ import StartPage from "./pages/start/start.component.jsx";
 class App extends React.Component {
     render() {
         return (
-            <div className='container'>
+            <div>
                 <Header/>
-                <Switch>
-                    <Route exact path='/' component={StartPage}/>
-                    <Route exact path='/game' component={GamePage}/>
-                </Switch>
+                <div className='container'>
+                    <Switch>
+                        <Route exact path='/' component={StartPage}/>
+                        <Route exact path='/game' component={GamePage}/>
+                    </Switch>
+                </div>
             </div>
         );
     }

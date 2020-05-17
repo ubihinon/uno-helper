@@ -1,3 +1,5 @@
+@import "../../App.scss";
+
 .card {
   &:not(:last-child) {
     border-bottom-left-radius: 0;
@@ -9,4 +11,10 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+
+  @media screen and (max-width: $middle-size) {
+    border-radius: 0 !important;
+    width: 100.5% !important;
+  }
 }
+
