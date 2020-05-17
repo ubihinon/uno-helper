@@ -9,10 +9,7 @@ class Header extends React.Component {
         return (
             <nav
                 className='navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-between'>
-                <div className='navbar-nav'>
-                    <NewGameButton/>
-                </div>
-                <a href="/" className="navbar-brand">UNO helper</a>
+                <h1 className="navbar-brand">UNO helper</h1>
                 <div className='navbar-nav'>
                     {this.props.location.pathname !== '/' ? <NewGameButton/> : ''}
                     {this.props.location.pathname === '/' ? <StartButton/> : ''}

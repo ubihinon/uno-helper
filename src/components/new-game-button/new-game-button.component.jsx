@@ -15,7 +15,7 @@ class NewGameButton extends React.Component {
     render() {
         return (
             <div>
-                <button type="button" className="btn btn-sm btn-outline-primary" data-toggle="modal"
+                <button type="button" className="btn btn-outline-primary" data-toggle="modal"
                         data-target="#newGameConfirmationModal">
                     New Game
                 </button>
