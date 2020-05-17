@@ -94,7 +94,7 @@ class GamePage extends React.Component {
             )
         }
         return (
-            <form onKeyDown={this.onKeyDown}>
+            <form onKeyDown={this.onKeyDown} onSubmit={this.save}>
                 <table className='table table-hover'>
                     <thead className='thead-light'>
                     <tr>
@@ -127,7 +127,7 @@ class GamePage extends React.Component {
                     <button className='btn btn-lg btn-danger' onClick={this.undo}>
                         Undo
                     </button>
-                    <button  className='btn btn-primary btn-lg col-3'>
+                    <button type="submit" className='btn btn-primary btn-lg col-3'>
                         Save
                     </button>
                 </div>
