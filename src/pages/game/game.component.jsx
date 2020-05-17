@@ -23,9 +23,6 @@ class GamePage extends React.Component {
 
     onKeyDown = event => {
         if (event.key === 'Enter') {
-            console.log(`onKeyDown`);
-            event.preventDefault();
-            event.stopPropagation();
             this.save(event);
         }
     };
@@ -97,7 +94,7 @@ class GamePage extends React.Component {
             )
         }
         return (
-            <form onSubmit={this.save} onKeyDown={this.onKeyDown}>
+            <form onKeyDown={this.onKeyDown}>
                 <table className='table table-hover'>
                     <thead className='thead-light'>
                     <tr>
@@ -130,7 +127,7 @@ class GamePage extends React.Component {
                     <button className='btn btn-lg btn-danger' onClick={this.undo}>
                         Undo
                     </button>
-                    <button type='submit' className='btn btn-primary btn-lg col-3'>
+                    <button  className='btn btn-primary btn-lg col-3'>
                         Save
                     </button>
                 </div>
