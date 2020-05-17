@@ -14,7 +14,6 @@ class GamePage extends React.Component {
         };
     }
 
-
     handleValueChange = event => {
         let player = this.props.players.find(player => player.id === parseInt(event.target.getAttribute('id')));
         player.newValue = parseInt(event.target.value);

@@ -46,7 +46,7 @@ const playerReducer = (state = INITIAL_STATE, action) => {
                     player.score += player.newValue;
                     player.newValue = 0;
                     return player;
-                })
+                }).sort((a, b) => a.score > b.score ? -1 : 1)
             };
         default:
             return state;
