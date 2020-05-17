@@ -39,6 +39,15 @@ const playerReducer = (state = INITIAL_STATE, action) => {
                     return player;
                 })
             };
+        case PlayerActionTypes.UPDATE_PLAYERS_SCORE:
+            return {
+                ...state,
+                players: state.players.map(player => {
+                    player.score += player.newValue;
+                    player.newValue = 0;
+                    return player;
+                })
+            };
         default:
             return state;
     }

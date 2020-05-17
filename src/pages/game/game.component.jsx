@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {addHistory, deleteHistory} from "../../redux/history/history.actions";
 import GameOver from "../../components/game-over/game-over.component.jsx";
 import GameTypes from "../../redux/game-type/game-type.consts";
+import {updatePlayersScore} from "../../redux/player/player.actions";
 
 
 class GamePage extends React.Component {
@@ -34,18 +35,8 @@ class GamePage extends React.Component {
                 })
             ]
         });
-
-        this.setState(() => {
-            let players = this.props.players.map(player => {
-                player.score += player.newValue;
-                player.newValue = 0;
-                return player;
-            });
-
-            return {
-                players: [...players]
-            }
-        }, this.checkWinnerOrLoser);
+        this.props.updatePlayersScore();
+        this.checkWinnerOrLoser();
     };
 
     checkWinnerOrLoser = () => {
@@ -141,7 +132,8 @@ class GamePage extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
     addHistory: history => dispatch(addHistory(history)),
-    deleteHistory: history => dispatch(deleteHistory(history))
+    deleteHistory: history => dispatch(deleteHistory(history)),
+    updatePlayersScore: () => dispatch(updatePlayersScore())
 });
 
 const mapStateToProps = state => ({

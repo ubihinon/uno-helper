@@ -15,3 +15,8 @@ export const resetPlayers = () => ({
     type: PlayerActionTypes.RESET_PLAYERS,
     payload: null
 });
+
+export const updatePlayersScore = () => ({
+    type: PlayerActionTypes.UPDATE_PLAYERS_SCORE,
+    payload: null
+});
