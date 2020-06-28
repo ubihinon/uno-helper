@@ -1,4 +1,5 @@
 import React from "react";
+import './game.styles.scss'
 import {connect} from "react-redux";
 import {addHistory, deleteHistory} from "../../redux/history/history.actions";
 import GameOver from "../../components/game-over/game-over.component.jsx";
