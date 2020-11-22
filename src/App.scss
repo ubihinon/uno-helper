@@ -5,26 +5,38 @@
 @import "styles/variables";
 
 html {
+  @include media-breakpoint-down(xl) {
+    font-size: 130%;
+  }
+
   @include media-breakpoint-down(md) {
-    font-size: 80%;
+    font-size: 100%;
   }
 
   @include media-breakpoint-down(sm) {
-    font-size: 60%;
+    font-size: 80%;
   }
 }
 
 .container {
   margin-top: 5rem;
+}
 
-  @include media-breakpoint-down(sm) {
-    padding: 0 !important;
+.row {
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 1rem;
+    }
   }
 }
 
+
 .action-buttons {
-  padding: 0 !important;
-  @media screen and (max-width: $middle-size) {
-    padding: 0 1rem !important;
+  margin: auto 0 !important;
+  @include media-breakpoint-down(sm) {
+    :first-child {
+      margin-top: 1rem;
+    }
   }
 }

@@ -95,39 +95,35 @@ class GamePage extends React.Component {
         }
         return (
             <form onKeyDown={this.onKeyDown} onSubmit={this.save}>
-                <table className='table table-hover'>
-                    <thead className='thead-light'>
-                    <tr>
-                        <th>Name</th>
-                        <th>Score</th>
-                        <th>New value</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {
-                        this.props.players.map(player => (
-                            <tr key={player.id}>
-                                <td>{player.name}</td>
-                                <td>{player.score}</td>
-                                <td>
-                                    <input type="number"
-                                           className='form-control form-control-lg'
-                                           min='0'
-                                           id={player.id}
-                                           onChange={this.handleValueChange}
-                                           value={player.newValue > 0 ? player.newValue : ''}
-                                    />
-                                </td>
-                            </tr>
-                        ))
-                    }
-                    </tbody>
-                </table>
-                <div className='d-flex justify-content-between action-buttons'>
-                    <button className='btn btn-lg btn-danger' onClick={this.undo}>
+                {
+                    this.props.players.map(player => (
+                        <div className='row' key={player.id}>
+                            <div className='col col-12 col-xl-5 col-lg-5 col-md-5 d-block d-md-none'>
+                                <h3>{player.score}: {player.name}</h3>
+                            </div>
+                            <div className='col col-12 col-xl-5 col-lg-5 col-md-5 d-none d-md-flex align-items-center'>
+                                {player.name}
+                            </div>
+                            <div className='col col-12 col-xl-1 col-lg-1 col-md-1 d-none d-md-flex align-items-center'>
+                                {player.score}
+                            </div>
+                            <div className='col col-12 col-xl-6 col-lg-6 col-md-6'>
+                                <input type='number'
+                                       className='form-control form-control-lg'
+                                       min='0'
+                                       id={player.id}
+                                       onChange={this.handleValueChange}
+                                       value={player.newValue > 0 ? player.newValue : ''}
+                                />
+                            </div>
+                        </div>
+                    ))
+                }
+                <div className='row d-flex justify-content-between flex-column-reverse flex-md-row action-buttons flex-lg-shrink-1'>
+                    <button className='btn btn-lg btn-outline-danger col col-12 col-md-2' onClick={this.undo}>
                         Undo
                     </button>
-                    <button type="submit" className='btn btn-primary btn-lg col-3'>
+                    <button type="submit" className='btn btn-primary btn-lg col col-12 col-md-3'>
                         Save
                     </button>
                 </div>
